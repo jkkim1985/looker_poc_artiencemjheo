@@ -97,6 +97,14 @@ view: sigma_url_sqi {
     hidden: yes
   }
 
+  dimension: statuscode {
+    type: string
+    sql: (case when ${sqi_status_code}!=404 and ${statuscode_left2}=40 then "4XX"
+               when ${statuscode_left2}=50 then "5XX"
+               else ${sqi_status_code} end);;
+    label: "Status Error Code"
+  }
+
   measure: page_all {
     type: number
     sql: count(${sqi_origin_url}) ;;
@@ -116,57 +124,58 @@ view: sigma_url_sqi {
   }
 
   measure: status_200 {
-    type: sum
-    sql: count(${sqi_origin_url});;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 200"
     filters: [sqi_status_code: "200"]
   }
 
+
   measure: status_301_correct {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 301 Correct"
     filters: [sqi_status_code: "301", sqi_status_value: "True"]
   }
 
   measure: status_301_incorrect {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 301 Incorrect"
     filters: [sqi_status_code: "301", sqi_status_value: "False"]
   }
 
   measure: status_302_correct {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 302 Correct"
     filters: [sqi_status_code: "302", sqi_status_value: "True"]
   }
 
   measure: status_302_incorrect {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 302 Incorrect"
     filters: [sqi_status_code: "302", sqi_status_value: "False"]
   }
 
   measure: status_404 {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 404"
     filters: [sqi_status_code: "404"]
   }
 
   measure: status_4xx {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 4XX"
     filters: [sqi_status_code: "!=404", statuscode_left2: "40"]
   }
 
   measure: status_5xx {
-    type: sum
-    sql: count(${sqi_origin_url}) ;;
+    type: count
+    drill_fields: [sqi_origin_url]
     label: "Status 5XX"
     filters: [statuscode_left2: "50"]
   }

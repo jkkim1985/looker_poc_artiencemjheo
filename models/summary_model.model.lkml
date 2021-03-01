@@ -20,12 +20,6 @@ include: "/views/*.view.lkml"                # include all views in the views/ f
 # }
 
 explore: sigma_url_sqi {
-  join : sigma_url_fsi {
-    type: left_outer
-    sql_on: (${sigma_url_sqi.sqi_crawl_date} = ${sigma_url_fsi.fsi_crawl_date})
-      and (${sigma_url_sqi.sqi_origin_url} = ${sigma_url_fsi.fsi_origin_url});;
-    relationship: many_to_one
-  }
   join : sigma_region {
     type: left_outer
     sql_on: (${sigma_url_sqi.sqi_country_code} = ${sigma_region.region_country_code});;
@@ -34,5 +28,17 @@ explore: sigma_url_sqi {
   always_filter: {
     filters: [sigma_url_sqi.sqi_country_code: "-wrong site code"]
   }
-  label: "Summary Table"
+  label: "Summary Table - SQI"
+}
+
+explore: sigma_url_fsi {
+  join : sigma_region {
+    type: left_outer
+    sql_on: (${sigma_url_fsi.fsi_country_code} = ${sigma_region.region_country_code});;
+    relationship: one_to_one
+  }
+  always_filter: {
+    filters: [sigma_url_fsi.fsi_country_code: "-wrong site code"]
+  }
+  label: "Summary Table - FSI"
 }

@@ -149,107 +149,107 @@ view: sigma_url_fsi {
     sql: ${TABLE}.fsi_title_tag_short ;;
   }
 
+
   measure: title_tag_duplicate {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Title Tag Duplicate"
     filters: [fsi_title_tag_duplicate: "True"]
   }
 
   measure: title_tag_missing {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Title Tag Missing"
     filters: [fsi_title_tag_missing: "True"]
   }
 
   measure: title_tag_long {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Title Tag Long"
     filters: [fsi_title_tag_long: "True"]
   }
 
   measure: title_tag_short {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Title Tag Short"
     filters: [fsi_title_tag_short: "True"]
   }
 
-
   measure: title_tag_no_issue {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Title Tag No Issue"
     filters: [fsi_title_tag_no_issue: "True"]
   }
 
   measure: meta_description_tag_duplicate {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Meta Description Tag Duplicate"
     filters: [fsi_meta_description_tag_duplicate: "True"]
   }
 
   measure: meta_description_tag_missing {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Meta Description Tag Missing"
     filters: [fsi_meta_description_tag_missing: "True"]
   }
 
   measure: meta_description_tag_long {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Meta Description Tag Long"
     filters: [fsi_meta_description_tag_long: "True"]
   }
 
   measure: meta_description_tag_short {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Meta Description Tag Short"
     filters: [fsi_meta_description_tag_short: "True"]
   }
 
   measure: meta_description_tag_no_issue {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Meta Description Tag No Issue"
     filters: [fsi_meta_description_tag_no_issue: "True"]
   }
 
   measure: canonical_tag_self_referring {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Canonical Tag Self Referring"
     filters: [fsi_canonical_tag_self_referring: "True"]
   }
 
   measure: canonical_tag_non_self_referring {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Canonical Tag Non Self Referring"
     filters: [fsi_canonical_tag_non_self_referring: "True"]
   }
 
   measure: language_wrong {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Wrong Language Tag"
     filters: [fsi_language_wrong: "True"]
   }
 
   measure: language_no_issue {
-    type: sum
-    sql: count(${fsi_origin_url}) ;;
+    type: count
+    drill_fields: [fsi_origin_url]
     label: "Language Tag No Issue"
     filters: [fsi_language_no_issue: "True"]
   }
 
   measure: page_count {
-    type: sum
+    type: number
     sql: count(${fsi_origin_url}) ;;
     label: "page all"
   }
