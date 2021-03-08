@@ -33,7 +33,7 @@ view: sigma_url_sqi {
       quarter,
       year
     ]
-    sql: to_char(${TABLE}.sqi_crawl_date, 'yyyy-MM-dd, hh:mm:ss') ;;
+    sql: ${sqi_crawl_date} ;;
     label: "DateTime"
   }
 
@@ -103,6 +103,15 @@ view: sigma_url_sqi {
                when ${statuscode_left2}=50 then "5XX"
                else ${sqi_status_code} end);;
     label: "Status Error Code"
+  }
+
+  dimension: gotoev {
+    type: string
+    sql: case when len(${sqi_sites_code}) >= 0 then "Executive View" end ;;
+    link: {
+      label: "Go To Executive View"
+      url: "https://artience.cloud.looker.com/dashboards-next/2"
+    }
   }
 
   measure: page_all {

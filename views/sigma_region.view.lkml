@@ -26,6 +26,7 @@ view: sigma_region {
   dimension: region_site_code {
     type: string
     sql: ${TABLE}.region_site_code ;;
+    label: "Site Code"
   }
 
   dimension: region_version {
