@@ -22,19 +22,11 @@ view: sigma_url_sqi {
     label: "Date"
   }
 
-  dimension_group: creat_crawl_date {
+  dimension_group: sqi_crawl_date {
     type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
+    timeframes: [date, week, month, year]
     sql: ${sqi_crawl_date} ;;
-    label: "DateTime"
+    label: "Date"
   }
 
   dimension: sqi_origin_url {
